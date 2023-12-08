@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Войти{% endblock title %}
+
+{% block content %}
+
+<div class="container ">
+    <div class="col-12">
+      <div class="card login-card position-absolute top-50 start-50 translate-middle">
+        <div class="card-body">
+          <form method="post">
+            <h1>Войдите в аккаунт</h1>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-outline-light btn-custom-ligth rounded pt-1 pb-1 mt-3">Войти</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock content %}

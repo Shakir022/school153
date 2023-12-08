@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{user.first_name}} {{user.last_name}}{% endblock title %}
+
+{% block content %}
+
+<div class="card position-absolute top-50 start-50 translate-middle">
+    <div class="card-body">
+        <h1 class="text-center">{{user.first_name}} {{user.last_name}}</h1>
+        <h2 class="card-title">Класс: {{user.grade}}</h5>
+        <h2>Пол: {{user.gender}}</h2>
+        <h2>День рождения: {{user.birthday}}</h2>
+    </div>
+</div>    
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_superuser %}
+
+    <div class="news-list">
+        <div class="card mb-4 position-absolute top-50 start-50 translate-middle">
+            <div class="card-header text-light fs-1 ">
+                <form action="" method="post">{% csrf_token %}
+                <p>Вы уверены что хотите удалить "{{ article.title }}"?</p>
+                <button class="btn btn-danger ml-2 fs-2" type="submit">Удалить</button>
+                </form>
+            </div>     
+        </div>
+    </div>
+
+{% else %}
+<h1 class="position-absolute top-50 start-50 translate-middle">Вы не имеете доступа к этой странице.</h1>
+{% endif %}
+
+{% endblock content %}

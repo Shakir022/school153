@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Многопрофильная школа-гимназия №153 им. А. Розыбакиева {% endblock title %}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+
+<div class="container header-container">
+    <header>
+       <nav class="navbar navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
+        <div class="container">
+          <a href="{% url 'home' %}">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            fill="currentColor"
+            class="bi bi-mortarboard-fill me-2"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"
+            />
+            <path
+              d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"
+            />
+          </svg>
+        </a>
+          <a class="navbar-brand" href="{% url 'home' %}">ШКОЛА №153</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            style="border-color: white; outline: none;"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-list text-light" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+          </svg>
+          </button>
+  
+          <div class="collapse navbar-collapse " id="navbarNav">
+            <div></div>
+            <ul class="navbar-nav text-center ">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'article_list' %}">НОВОСТИ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'staff_list' %}">АДМИНИСТРАЦИЯ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">РАСПИСАНИЕ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-disabled="true">КОНТАКТЫ</a>
+              </li>
+            </ul>
+
+            <div>
+
+                {% if user.is_authenticated == False%}
+                <a href="{% url 'login' %}">
+                  <button class="btn-login rounded" type="submit">ВОЙТИ</button>
+                </a>
+                {% else %}
+                <a href="{% url 'user' %}">
+                  <button class="btn-login rounded text-uppercase" id="login-button" type="submit">{{user.first_name}}</button>
+                </a>
+                <a href="{% url 'logout' %}">
+                  <button class="btn-login rounded" type="submit">ВЫЙТИ</button>
+                </a>
+                {% endif %}
+      
+            </div>
+              
+          </div>
+
+        </div>
+      </nav> 
+    </header>
+</div>
+
+
+<main>
+  <div class="container">
+    {% block content %} {% endblock content %}
+  </div>
+</main>
+
+<footer class=" d-flex justify-content-center p-3">
+  <div class="container">
+  <div class="card-group text-center">
+ 
+    <div class="card footer-card">
+      <div class="card-body">
+ 
+        <span>Многопрофильная школа-гимназия №153 им. А. Розыбакиева</span>
+      </div>
+    </div>
+
+    <div class="card footer-card">
+      <div class="card-body">
+        ​Улица Садвакасова 27,​ Достык м-н, Ауэзовский район, Алматы,
+            050063/A10D1P8
+      </div>
+    </div>
+
+    <div class="card footer-card">
+      <div class="card-body">
+        +7 (727) 230‒97‒61 <div class="text-white-50">приемная</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</footer>
+
+    
+
+
+  <script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+  crossorigin="anonymous"
+></script>  
+</body>
+</html>

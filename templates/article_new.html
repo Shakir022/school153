@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_superuser %}
+
+
+    <div class="news-list text-light position-absolute top-50 start-50 translate-middle" style="width: 65%;">
+        <div class="card p-4">
+            <h1 class="text-light text-center">Создать новость</h1>
+            <form action="" method="post" class="text-light text-start">{% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center">
+                <button class="btn btn-outline-light ml-2 fs-4 " type="submit" style="width: 30%;">Save</button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+{% else %}
+<h1 class="position-absolute top-50 start-50 translate-middle">Вы не имеете доступа к этой странице.</h1>
+{% endif %}
+
+{% endblock content %}

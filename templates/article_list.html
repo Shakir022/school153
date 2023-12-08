@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Новости{% endblock title %}
+
+{% block content %}
+    <div class="news-list mt-3">
+    {% if user.is_superuser %}
+        <p>
+            <a href="{% url 'article_new' %}" class="btn btn-outline-light">Добавить новость</a>
+        </p>
+    {% endif %}
+    {% for article in object_list %}
+            <div class="card mb-4">
+                <a href="{% url 'article_detail' article.pk %}">
+                    <div class="card-header">
+                        <span class="font-weight-bold fs-3 text-light ">{{ article.title }}</span>
+                        <span class="fs-4 text-white-50" >| {{ article.date }}</span>
+                    </div>     
+                </a>
+                <a href="{% url 'article_detail' article.pk %}">   
+                    <div class="card-body"> 
+                            <p class="card-text text-light text-truncation">{{ article.body }}</p>
+                    <!-- <a href="{% url 'article_edit' article.pk %}" class="btn btn-outline-light rounded mb-2">изменить</a> <a href="{% url 'article_delete' article.pk %}" class="btn btn-outline-light rounded">удалить</a> -->
+                    </div>
+                </a>
+            </div>
+    {% endfor %}
+    </div>
+
+{% endblock content %}
